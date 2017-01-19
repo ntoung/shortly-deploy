@@ -28,11 +28,20 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist/shortly.min.js': ['public/dist/shortly.js']
+        }
+      }
     },
 
     eslint: {
+      options: {
+        quiet: true
+      },
       target: [
         // Add list of files to lint here
+        'public/client/*.js'
       ]
     },
 
@@ -58,6 +67,13 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+      },
+      deploy: {
+        command: [
+          'git add .',
+          'git commit -m "Commitin dis shit"',
+          'git push live master'
+        ].join('&&')
       }
     },
   });
@@ -84,6 +100,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'test', 'eslint', 'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -96,6 +113,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'build', 'shell:deploy'
   ]);
 
 
