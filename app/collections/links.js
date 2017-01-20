@@ -2,8 +2,17 @@
 var db = require('../config');
 var Link = require('../models/link');
 
-// var Links = new db.Collection();
+// var Links = db.collections.urls;
+var Links = Link.collection;
 
-// Links.model = Link;
+//var Links = {};
 
-// module.exports = Links;
+Links.model = Link;
+
+Links.add = function(link, cb) {
+  console.log('inserting link');
+  Links.insert(link, cb);
+  // cb(link);
+};
+
+module.exports = Links;

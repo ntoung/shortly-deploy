@@ -48,6 +48,7 @@ describe('', function() {
             'url': 'http://www.roflzoo.com/'})
           .expect(200)
           .expect(function(res) {
+            // console.log(res.body.url);
             expect(res.body.url).to.equal('http://www.roflzoo.com/');
             expect(res.body.code).to.be.ok;
           })
@@ -136,7 +137,7 @@ describe('', function() {
   describe('Priviledged Access:', function() {
 
     // /*  Authentication  */
-    // // TODO: xit out authentication
+    // // TODO: it out authentication
     it('Redirects to login page if a user tries to access the main page and is not signed in', function(done) {
       request(app)
         .get('/')

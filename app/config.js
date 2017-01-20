@@ -8,28 +8,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
   console.log('we\'re connected');
-
-
-});
-
-db.UrlSchema = mongoose.Schema({
-  url: 'string',
-  baseUrl: 'string',
-  code: 'string',
-  title: 'string',
-  visits: 'number' 
-});
-
-db.UserSchema = mongoose.Schema({
-  username: 'string',
-  password: 'string'
 });
 
 
 // var Url = mongoose.model('Url', db.UrlSchema);
-
-// var gaegobr = new Url({url:'', baseUrl:''});
-
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -39,6 +21,7 @@ db.UserSchema = mongoose.Schema({
 //   useNullAsDefault: true
 // });
 // var db = require('bookshelf')(knex);
+
 
 // db.knex.schema.hasTable('urls').then(function(exists) {
 //   if (!exists) {
